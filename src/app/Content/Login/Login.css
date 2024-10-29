@@ -1,0 +1,99 @@
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5; /* Light background color */
+  }
+  
+  /* Login Container */
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Login Form */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    max-width: 450px;
+  }
+
+
+  /* Profile Icon */
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-image img {
+    max-width: 100%; /* Set a maximum width to avoid the image getting too large */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%;
+    margin-bottom: 20px;
+    object-fit: cover; /* Cover the image */
+  }
+  
+  /* Input Group */
+  .input-group {
+    width: 75%;
+    margin-bottom: 25px;
+  }
+  
+  .input-group label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Button Group */
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .login-button,
+  .create-account-button {
+    width: 45%;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #32689a; /* Blue color for the buttons */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.1''s step-end;
+  }
+  
+  .login-button:hover,
+  .create-account-button:hover {
+    background-color: #2a4373; /* Darker shade on hover */
+  }
+  
+  .create-account-button {
+    background-color: #32689a;
+    color: white;
+  }
+  

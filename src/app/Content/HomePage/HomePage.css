@@ -1,0 +1,96 @@
+.page-content {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+  min-height: 100vh;
+  padding: 0 2rem;
+  background-color: #f5f5f5;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  /* margin-top: 20px; */
+  margin-bottom: 10px;
+}
+
+.empty-block {
+  height: 20vh;
+}
+
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* Two columns for the first row */
+  gap: 20px;
+  max-width: 900px;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+/* Center the items within the grid */
+.grid>* {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 15px;
+  gap: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  width: 250px;
+  padding: 1.5rem;
+  border-radius: 25px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.patogeno {
+  background-color: #e6626f;
+  /* Red */
+  color: #000000;
+}
+
+.transmissor {
+  background-color: #efae78;
+  /* Orange */
+  color: #000000;
+}
+
+.prevencao {
+  background-color: #f5e19c;
+  /* Yellow */
+  color: #000;
+}
+
+.dados {
+  background-color: #a2ca8e;
+  /* Light Green */
+  color: #000;
+}
+
+.tratamento {
+  background-color: #66af91;
+  /* Green */
+  color: #000000;
+}
