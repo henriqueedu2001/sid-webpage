@@ -1,9 +1,20 @@
 import React from 'react'
 
+import Navbar from '@/components/Navbar/Navbar';
+
 import './Login.css';
 
 function Login() {
 
+  return (
+    <div className='page-container'>
+      <Navbar/>
+      {Content()}
+    </div>
+  );
+}
+
+function Content() {
   return (
     <div className="login-container">
       <div className="login-form">
