@@ -44,7 +44,7 @@ function Content() {
         {/* Buttons */}
         <div className="button-group">
           <button className="register-button">Cadastrar</button>
-          <button className="login-button">Já tenho conta</button>
+          <button className="register-button">Já tenho conta</button>
         </div>
       </div>
     </div>

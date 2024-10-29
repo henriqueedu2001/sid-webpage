@@ -38,7 +38,7 @@ function Content() {
         {/* Buttons */}
         <div className="button-group">
           <button className="login-button">Entrar</button>
-          <button className="create-account-button">Não tenho conta</button>
+          <button className="login-button">Não tenho conta</button>
         </div>
       </div>
     </div>

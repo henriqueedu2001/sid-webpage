@@ -74,8 +74,7 @@ body {
     margin-top: 20px;
   }
   
-  .login-button,
-  .create-account-button {
+  .login-button {
     width: 45%;
     padding: 10px;
     font-size: 1rem;
@@ -87,13 +86,7 @@ body {
     transition: background-color 0.1''s step-end;
   }
   
-  .login-button:hover,
-  .create-account-button:hover {
+  .login-button:hover {
     background-color: #2a4373; /* Darker shade on hover */
-  }
-  
-  .create-account-button {
-    background-color: #32689a;
-    color: white;
   }
   
