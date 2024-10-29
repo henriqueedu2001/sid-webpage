@@ -1,6 +1,4 @@
-import HomePage from "@/pages/HomePage/HomePage";
-import Login from "@/pages/Login/Login";
-import Register from "@/pages/Register/Register";
+import HomePage from "../app/Content/HomePage/page";
 
 export default function Home() {
   return (
