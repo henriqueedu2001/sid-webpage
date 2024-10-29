@@ -10,10 +10,10 @@ function Navbar() {
           <a to='/'>SID</a>
         </div>
         <ul>
-          <li><a href='/articles'>artigos</a></li>
-          <li><a href='/data'>dados</a></li>
-          <li><a href='/contribute'>contribua</a></li>
-          <li><a href='/acess'>acesso</a></li>
+          <li><a href='/Content/Articles'>artigos</a></li>
+          <li><a href='/Content/Data'>dados</a></li>
+          <li><a href='/Content/Contribute'>contribua</a></li>
+          <li><a href='/Content/Login'>acesso</a></li>
         </ul>
         <div>
 
