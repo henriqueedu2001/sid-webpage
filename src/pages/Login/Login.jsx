@@ -5,10 +5,33 @@ import './Login.css';
 function Login() {
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="login-container">
+      <div className="login-form">
+        {/* Profile icon */}
+        <div className="profile-image">
+          <img src="/icons/profile.png" alt="Profile Icon"/>
+        </div>
+        
+        {/* Email input */}
+        <div className="input-group">
+          <label htmlFor="email">E-mail:</label>
+          <input type="email" id="email" name="email" />
+        </div>
+        
+        {/* Password input */}
+        <div className="input-group">
+          <label htmlFor="password">Senha:</label>
+          <input type="password" id="password" name="password" />
+        </div>
+        
+        {/* Buttons */}
+        <div className="button-group">
+          <button className="login-button">Entrar</button>
+          <button className="create-account-button">Não tenho conta</button>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
 export default Login
