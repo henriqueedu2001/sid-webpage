@@ -1,0 +1,26 @@
+.footer {
+    background-color: #d9d9d9;
+    position: relative;
+    border-top: 3px solid black; /* Bold line on top to separate the footer */
+    padding: 4px 2px;
+  }
+  
+  .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 10vh;
+    max-width: 100vw; 
+    padding: 10px 20px; /* Padding inside the footer */
+  }
+  
+  .logo-container {
+    display: flex;
+    gap: 10px; /* Space between logos */
+  }
+  
+  img {
+    max-width: 10vw;
+    max-height: 10vh;
+  }
+  

@@ -1,14 +1,23 @@
-import React from 'react'
+import Image from 'next/image';
+import "./Footer.css";
 
-import './Footer.css';
-
-function Footer() {
-
+const Footer = () => {
   return (
-    <div>
-      <h1>Footer</h1>
-    </div>
-  )
-}
+    <footer className="footer">
+      <div className="footer-content">
+        <div className="logo-container">
+          <img
+            src="/usp.png"
+            alt="USP Logo"
+          />
+          <img
+            src="/poli.png" 
+            alt="Escola Politécnica Logo"
+          />
+        </div>
+      </div>
+    </footer>
+  );
+};
 
-export default Footer
+export default Footer;

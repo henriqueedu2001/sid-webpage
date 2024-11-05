@@ -11,6 +11,7 @@ function HomePage() {
     <div className="page-container">
       <Navbar></Navbar>
       {Content()}
+      <Footer></Footer>
     </div>
   );
 }
