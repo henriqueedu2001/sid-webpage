@@ -5,14 +5,16 @@ import React from 'react'
 
 import { useState, useEffect } from 'react'
 
-import './Articles.css';''
+import './Articles.css';
+
+import {apiFetch} from '../../../core/auth'
 
 function Articles() {
   const [data, setData] = useState([])
   const [dataCards, setDataCards] = useState(null)
 
   async function handleClick() {
-    let res = await fetch('https://vigent.saude.sp.gov.br/sisaweb_api/lista.php?')
+    let res = await apiFetch('https://sid-api-yrbb.onrender.com/articles')
     let apiData = await res.json()
     setData(apiData)
     console.log(data)
@@ -24,7 +26,7 @@ function Articles() {
       <ul>
         {data.map((item) => (
           <li key={item.id}>
-            <strong>ID:</strong> {item.id} - <strong>Nome:</strong> {item.nome}
+            <strong>ID:</strong> {item.id} - <strong>Nome:</strong> {item.title}
           </li>
         ))}
       </ul>
