@@ -1,20 +1,40 @@
 'use client'
  
 
-import React from 'react'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react';
 
 import './Articles.css';
 
-import {apiFetch} from '../../../core/auth'
+import { apiFetch } from '../../../core/auth';
+
 
 function Articles() {
+
+  return (
+    <div className="page-container">
+      {Content()}
+    </div>
+  );
+}
+
+function Content() {
   const [data, setData] = useState([])
   const [dataCards, setDataCards] = useState(null)
+  const [query, setQuery] = useState("");
 
-  async function handleClick() {
-    let res = await apiFetch('https://sid-api-yrbb.onrender.com/articles')
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  function handleKeyDown(e) {
+    if (e.key === "Enter") {
+      fetchData(); 
+    }
+  }
+
+  async function fetchData() {
+    let res = await apiFetch(`https://sid-api-yrbb.onrender.com/articles?search_type=content&search=${encodeURIComponent(query)}`)
     let apiData = await res.json()
     await setData(apiData)
     await console.log(data)
@@ -22,16 +42,30 @@ function Articles() {
   
   return (
     <div className="container">
-      <button onClick={handleClick}>API FETCH</button>
-      <ul>
+      <div className="input-wrapper">
+        <input
+          type="text"
+          placeholder="Digite para buscar artigos..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={(e) => handleKeyDown(e)}
+        />
+        <button onClick={fetchData} className="search-button">
+          🔍
+        </button>
+      </div>
+      <div className="cards">
         {data.map((item) => (
-          <li key={item.id}>
-            <strong>ID:</strong> {item.id} - <strong>Nome:</strong> {item.title}
-          </li>
+          <div key={item.id} className="card">
+            <h2 className="card-title">{item.title}</h2>
+            <p className="card-description">{item.preview}</p>
+            <p className="card-author">Autor: {item.author_name}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
-  )
+  );
+  
 }
 
 function Card() {
