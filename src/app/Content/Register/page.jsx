@@ -26,12 +26,12 @@ function Content() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [motivation, setmotivation] = useState('');
+  const [error, setError] = useState('no error');
 
   const register = () => {
     console.log('Initiating register');
     console.log('Username: ', username, 'email:', email, 'password: ', password, 'motivation: ', motivation);
     registerCredentials(username, email, password, motivation);
-
   }
 
   async function registerCredentials(username, email, password, motivation) {
@@ -60,6 +60,9 @@ function Content() {
       const response = await fetch(apiUrl, dataSent);
 
       if (!response.ok) {
+        const errorData = await response.json();
+        const errorMessage = errorData.detail;
+        setError(errorMessage);
         throw new Error('Erro ao cadastrar usuário');
       }
 
@@ -69,7 +72,6 @@ function Content() {
       return { success: true, message: 'cadastro bem-sucedido!' };
 
     } catch (error) {
-      console.error('Erro ao fazer o cadastro:', error);
       return { success: false, message: error.message };
     }
   }
@@ -114,12 +116,16 @@ function Content() {
 
         {/* Motivation input */}
         <div className="input-group">
-          <label htmlFor="text">Moticação:</label>
+          <label htmlFor="text">Motivação:</label>
           <textarea
             type="text"
             id="motivation"
             name="motivation"
             onChange={(e) => setmotivation(e.target.value)} />
+        </div>
+
+        <div>
+          {errorLabel(error)}
         </div>
 
         {/* Buttons */}
@@ -128,6 +134,19 @@ function Content() {
           <button className="register-button">Já tenho conta</button>
         </div>
       </div>
+    </div>
+  );
+}
+
+function errorLabel(error) {
+  if(error == 'no error') {
+    return (
+      <></>
+    );    
+  }
+  return (
+    <div className='error-box'>
+      <p>{error}</p>
     </div>
   );
 }

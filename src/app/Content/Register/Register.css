@@ -5,6 +5,14 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5; /* Light background color */
   }
+
+  .error-box {
+    max-width: 80%;
+    color: #ff0000;
+    text-align: center;
+    border: 1px solid #ffcccc;
+    background-color: #ffe5e5;
+  }
   
   /* Login Container */
   .login-container {

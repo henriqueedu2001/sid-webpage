@@ -16,8 +16,8 @@ function Articles() {
   async function handleClick() {
     let res = await apiFetch('https://sid-api-yrbb.onrender.com/articles')
     let apiData = await res.json()
-    setData(apiData)
-    console.log(data)
+    await setData(apiData)
+    await console.log(data)
   }
   
   return (
@@ -32,6 +32,10 @@ function Articles() {
       </ul>
     </div>
   )
+}
+
+function Card() {
+  return 
 }
 
 export default Articles

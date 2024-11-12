@@ -23,6 +23,7 @@ function Login() {
 function Content() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('no error');
 
   const login = () => {
     console.log('Initiating login');
@@ -47,7 +48,10 @@ function Content() {
         const response = await fetch(apiUrl, dataSent);
 
         if (!response.ok) {
-            throw new Error('Credenciais inválidas');
+          const errorData = await response.json();
+          const errorMessage = errorData.detail;
+          setError(errorMessage);
+          throw new Error('Credenciais inválidas');
         }
 
         const data = await response.json();
@@ -56,6 +60,7 @@ function Content() {
         localStorage.setItem('authToken', token);
 
         console.log('Login bem-sucedido:', data);
+        window.location.href = '/Content/Profile';
         return { success: true, message: 'Login bem-sucedido!' };
 
     } catch (error) {
@@ -93,12 +98,30 @@ function Content() {
             />
         </div>
         
+        <div>
+          {errorLabel(error)}
+        </div>
+
         {/* Buttons */}
         <div className="button-group">
           <button onClick={login} className="login-button">Entrar</button>
           <button className="login-button">Não tenho conta</button>
         </div>
+
       </div>
+    </div>
+  );
+}
+
+function errorLabel(error) {
+  if(error == 'no error') {
+    return (
+      <></>
+    );    
+  }
+  return (
+    <div className='error-box'>
+      <p>{error}</p>
     </div>
   );
 }
