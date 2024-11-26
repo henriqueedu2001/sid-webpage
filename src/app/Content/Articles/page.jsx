@@ -36,7 +36,7 @@ function Content() {
   async function fetchData() {
     let res = await apiFetch(`https://sid-api-yrbb.onrender.com/articles?search_type=content&search=${encodeURIComponent(query)}`)
     let apiData = await res.json()
-    await setData(apiData)
+    await setData(apiData)  
     await console.log(data)
   }
   
@@ -55,21 +55,22 @@ function Content() {
         </button>
       </div>
       <div className="cards">
-        {data.map((item) => (
-          <div key={item.id} className="card">
-            <h2 className="card-title">{item.title}</h2>
-            <p className="card-description">{item.preview}</p>
-            <p className="card-author">Autor: {item.author_name}</p>
-          </div>
-        ))}
+        {data.map((item) => (Card(item.id, item.title, item.preview, item.author_name)))}
       </div>
     </div>
   );
   
 }
 
-function Card() {
-  return 
+function Card(id, title, preview, author_name) {
+  return (
+    <div key={id} className="card">
+      <h2 className="card-title">{title}</h2>
+      <p className="card-description">{preview}</p>
+      <p className="card-author">Autor: {author_name}</p>
+      <a href=''>acessar</a>
+    </div>
+  );
 }
 
 export default Articles
