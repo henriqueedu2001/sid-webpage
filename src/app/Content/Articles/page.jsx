@@ -16,7 +16,7 @@ function Articles() {
   return (
     <div className="page-container">
       <Navbar className="navbar" />
-      <div className="content">{Content()}</div>
+      {Content()}
       <Footer className="footer" />
     </div>
   );
@@ -29,12 +29,12 @@ function Content() {
   const [query, setQuery] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [limit] = useState(5);
+  const [limit] = useState(6);
   const [totalItems, setTotalItems] = useState(0);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [currentPage]);
 
   function handleKeyDown(e) {
     if (e.key === "Enter") {
@@ -45,17 +45,16 @@ function Content() {
   async function fetchData() {
     const skip = (currentPage - 1) * limit;
 
-    //let totalRes = await apiFetch(`https://sid-api-yrbb.onrender.com/articles?search_type=${searchType}&search=${encodeURIComponent(query)}`);
-    //setTotalItems(totalRes.length);
-
     let res = await apiFetch(`https://sid-api-yrbb.onrender.com/articles?search_type=${searchType}&search=${encodeURIComponent(query)}&limit=${limit}&skip=${skip}`);
     let apiData = await res.json();
-    await setData(apiData);
-    await console.log(data);
+    await setData(apiData.articles);
+    await setTotalItems(apiData.total);
   }
+
+  const totalPages = Math.ceil(totalItems / limit);
   
   return (
-    <div className="container">
+    <div className="articles-container">
       <div className="input-wrapper">
         <input
           type="text"
@@ -84,6 +83,23 @@ function Content() {
             <p className="card-author">Autor: {item.author_name}</p>
           </div>
         ))}
+      </div>
+      <div className="pagination">
+        <button
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+        >
+          Anterior
+        </button>
+        <span>
+          Página {currentPage} de {totalPages}
+        </span>
+        <button
+          disabled={currentPage === totalPages || totalPages === 0}
+          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+        >
+          Próxima
+        </button>
       </div>
     </div>
   );
