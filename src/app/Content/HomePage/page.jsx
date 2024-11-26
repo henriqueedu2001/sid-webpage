@@ -18,41 +18,54 @@ function HomePage() {
 function Content() {
   return (
     <div className='page-content'>
-      <h1 className="title">Sistema de Informações sobre Dengue</h1>
-      <hr></hr>
-      <div className='empty-block'></div>
+      <br></br>
+      {Header()}
       <div className='grid-container'>
         <div className="grid">
-          <Card
-            icon="/icons/patogeno.png"
-            label="pathogen"
-            title="Patógeno"
-            customClass="patogeno"
-          />
-          <Card
-            icon="/icons/transmissor.png"
-            label="vector"
-            title="Transmissor"
-            customClass="transmissor"
-          />
-          <Card
-            icon="/icons/prevencao.png"
-            label="prevention"
-            title="Prevenção"
-            customClass="prevencao"
-          />
-          <Card
-            icon="/icons/dados.png"
-            label="data"
-            title="Dados"
-            customClass="dados"
-          />
-          <Card
-            icon="/icons/tratamento.png"
-            label="treatment"
-            title="Tratamento"
-            customClass="tratamento"
-          />
+          <a href='/Content/Articles'>
+            <Card
+              icon="/icons/patogeno.png"
+              label="pathogen"
+              title="Patógeno"
+              customClass="patogeno"
+            />
+          </a>
+          
+          <a href='/Content/Articles'>
+            <Card
+              icon="/icons/transmissor.png"
+              label="vector"
+              title="Transmissor"
+              customClass="transmissor"
+            />
+          </a>
+
+          <a href='/Content/Articles'>
+            <Card
+              icon="/icons/prevencao.png"
+              label="prevention"
+              title="Prevenção"
+              customClass="prevencao"
+            />
+          </a>
+
+          <a href='/Content/Articles'>
+            <Card
+              icon="/icons/dados.png"
+              label="data"
+              title="Dados"
+              customClass="dados"
+            />
+          </a>
+          
+          <a href='/Content/Articles'>
+            <Card
+              icon="/icons/tratamento.png"
+              label="treatment"
+              title="Tratamento"
+              customClass="tratamento"
+            />
+          </a>
         </div>
       </div>
     </div>
@@ -64,6 +77,15 @@ function Card({ icon, label, title, customClass }) {
     <div className={`card ${customClass}`}>
       <Image src={icon} alt={label} width={50} height={50} className="icon" />
       <h2>{title}</h2>
+    </div>
+  );
+}
+
+function Header() {
+  return (
+    <div>
+      <h1 className="title">Sistema de Informações sobre Dengue</h1>
+      <hr className='custom-line'></hr>
     </div>
   );
 }

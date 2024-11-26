@@ -1,19 +1,19 @@
 import React from 'react'
 import './Navbar.css'
 
-function Navbar() {
+function Navbar({ section }) {
 
   return (
     <nav className="navbar">
       <div className="container">
         <div className='sid-container'>
-          <a to='/'>SID</a>
+          <a href='/'>SID</a>
         </div>
         <ul>
-          <li><a href='/Content/Articles'>artigos</a></li>
-          <li><a href='/Content/Data'>dados</a></li>
-          <li><a href='/Content/Contribute'>contribua</a></li>
-          <li><a href='/Content/Login'>acesso</a></li>
+          <li className={section === 'articles' ? 'active' : ''} ><a href='/Content/Articles'>Artigos</a></li>
+          <li className={section === 'data' ? 'active' : ''} ><a href='/Content/Data'>Dados</a></li>
+          <li className={section === 'contribute' ? 'active' : ''} ><a href='/Content/Contribute'>Contribua</a></li>
+          <li className={section === 'login' ? 'active' : ''} ><a href='/Content/Login'>Acesso</a></li>
         </ul>
         <div>
 

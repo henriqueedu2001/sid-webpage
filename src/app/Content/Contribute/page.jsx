@@ -7,7 +7,7 @@ function Contribute() {
 
   return (
     <div>
-      <Navbar/>
+      <Navbar section="contribute"/>
       {Content()}
     </div>
   )

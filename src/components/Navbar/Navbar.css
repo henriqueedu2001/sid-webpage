@@ -19,6 +19,11 @@
     font-size: 18pt;
 }
 
+.navbar ul li.active {
+    text-decoration: underline; /* Sublinha o item ativo */
+    text-decoration-color: white;
+}
+
 .navbar .container {
     display: flex;
     align-items: center;
