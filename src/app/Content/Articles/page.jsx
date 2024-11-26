@@ -25,8 +25,12 @@ function Articles() {
 
 function Content() {
   const [data, setData] = useState([])
-  const [dataCards, setDataCards] = useState(null)
+  const [searchType, setSearchType] = useState("content")
   const [query, setQuery] = useState("");
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [limit] = useState(5);
+  const [totalItems, setTotalItems] = useState(0);
 
   useEffect(() => {
     fetchData();
@@ -39,10 +43,15 @@ function Content() {
   }
 
   async function fetchData() {
-    let res = await apiFetch(`https://sid-api-yrbb.onrender.com/articles?search_type=content&search=${encodeURIComponent(query)}`)
-    let apiData = await res.json()
-    await setData(apiData)
-    await console.log(data)
+    const skip = (currentPage - 1) * limit;
+
+    //let totalRes = await apiFetch(`https://sid-api-yrbb.onrender.com/articles?search_type=${searchType}&search=${encodeURIComponent(query)}`);
+    //setTotalItems(totalRes.length);
+
+    let res = await apiFetch(`https://sid-api-yrbb.onrender.com/articles?search_type=${searchType}&search=${encodeURIComponent(query)}&limit=${limit}&skip=${skip}`);
+    let apiData = await res.json();
+    await setData(apiData);
+    await console.log(data);
   }
   
   return (
@@ -55,6 +64,14 @@ function Content() {
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={(e) => handleKeyDown(e)}
         />
+        <select
+          value={searchType}
+          onChange={(e) => setSearchType(e.target.value)}
+          className="search-select"
+        >
+          <option value="content">CONTEÚDO</option>
+          <option value="author name">AUTOR</option>
+        </select>
         <button onClick={fetchData} className="search-button">
           🔍
         </button>
