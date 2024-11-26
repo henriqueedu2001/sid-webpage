@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 
 import './Articles.css';
 
+import Footer from '@/components/Footer/Footer';
+import Navbar from '@/components/Navbar/Navbar';
 import { apiFetch } from '../../../core/auth';
 
 
@@ -13,9 +15,12 @@ function Articles() {
 
   return (
     <div className="page-container">
-      {Content()}
+      <Navbar className="navbar" />
+      <div className="content">{Content()}</div>
+      <Footer className="footer" />
     </div>
   );
+  
 }
 
 function Content() {
