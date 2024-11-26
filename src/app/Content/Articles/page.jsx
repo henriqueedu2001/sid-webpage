@@ -32,6 +32,10 @@ function Content() {
   const [limit] = useState(6);
   const [totalItems, setTotalItems] = useState(0);
 
+  const [selectedSection, setSelectedSection] = useState('');
+
+  const sections = ['Patógeno', 'Transmissão', 'Prevenção', 'Tratamento'];
+
   useEffect(() => {
     fetchData();
   }, [currentPage]);
@@ -55,25 +59,40 @@ function Content() {
   
   return (
     <div className="articles-container">
-      <div className="input-wrapper">
-        <input
-          type="text"
-          placeholder="Digite para buscar artigos..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyDown={(e) => handleKeyDown(e)}
-        />
-        <select
-          value={searchType}
-          onChange={(e) => setSearchType(e.target.value)}
-          className="search-select"
-        >
-          <option value="content">CONTEÚDO</option>
-          <option value="author name">AUTOR</option>
-        </select>
-        <button onClick={fetchData} className="search-button">
-          🔍
-        </button>
+      <div>
+        <div className="sections">
+          {sections.map((section) => (
+            <button
+              key={section}
+              className={`section-button ${
+                selectedSection === section ? 'selected' : ''
+              }`}
+              onClick={() => setSelectedSection(section.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ç/g, 'c'))}
+            >
+              {section}
+            </button>
+          ))}
+        </div>
+        <div className="input-wrapper">
+          <input
+            type="text"
+            placeholder="Digite para buscar artigos..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={(e) => handleKeyDown(e)}
+          />
+          <select
+            value={searchType}
+            onChange={(e) => setSearchType(e.target.value)}
+            className="search-select"
+          >
+            <option value="content">CONTEÚDO</option>
+            <option value="author name">AUTOR</option>
+          </select>
+          <button onClick={fetchData} className="search-button">
+            🔍
+          </button>
+        </div>
       </div>
       <div className="cards">
         {data.map((item) => (

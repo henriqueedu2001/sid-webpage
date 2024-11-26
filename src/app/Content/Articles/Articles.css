@@ -56,6 +56,32 @@
     margin: 0;
     padding-bottom: 10rem;
   }
+
+  .sections {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  
+  .section-button {
+    background: none;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #000;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  
+  .section-button:hover {
+    border-bottom: 2px solid #ccc;
+  }
+  
+  .section-button.selected {
+    font-weight: bold;
+    border-bottom: 2px solid #007BFF;
+  }
   
   .input-wrapper {
     display: flex;
