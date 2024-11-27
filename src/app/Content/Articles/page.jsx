@@ -17,6 +17,7 @@ function Articles() {
       <Footer/>
     </div>
   );
+  
 }
 
 function Content() {
