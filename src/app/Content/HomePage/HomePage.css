@@ -63,6 +63,7 @@
   border-radius: 25px;
   text-align: center;
   transition: transform 0.2s;
+  cursor: pointer;
 }
 
 .card:hover {

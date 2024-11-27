@@ -1,18 +1,28 @@
-body {
+  body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5; /* Light background color */
+    background-color: #f5f5f5;
+    width: auto;
+    overflow-x: hidden;
   }
 
-  .container{
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .articles-container{
     margin-left: 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-between;
     min-height: 50vh;
-    padding: 10px 2rem;
+    padding: 20px;
     background-color: #f5f5f5;
+    flex: 1;
   }
 
   .info-section{
@@ -47,11 +57,44 @@ body {
     padding-bottom: 10rem;
   }
 
-  .container {
+  .sections {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  
+  .section-button {
+    background: none;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #000;
+    border-bottom: 2px solid #ddd;
+    transition: border-color 0.3s ease;
+  }
+  
+  .section-button:hover {
+    border-bottom: 2px solid #aaa;
+  }
+  
+  .section-button.selected {
+    font-weight: bold;
+    border-bottom: 2px solid #007BFF;
+  }
+
+  .clear-button {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 1.3rem;
+    margin-left: 5px;
+    padding-bottom: 4px;
+    cursor: pointer;
+  }
+  
+  .clear-button:hover {
+    color: darkred;
   }
   
   .input-wrapper {
@@ -61,7 +104,7 @@ body {
     border-radius: 25px;
     overflow: hidden;
     width: 100%;
-    max-width: 500px;
+    max-width: 550px;
     margin-bottom: 32px;
   }
   
@@ -72,10 +115,16 @@ body {
     border: none;
     outline: none;
   }
+
+  .search-select {
+    padding: 10px;
+    border: 4px solid #F5F5F5;
+    font-weight: bold;
+  }
   
   .search-button {
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #007BFF;
     color: white;
     font-size: 18px;
     border: none;
@@ -84,7 +133,7 @@ body {
   }
   
   .search-button:hover {
-    background-color: #45a049;
+    background-color: #0056C8;
   }
   
   .cards {
@@ -102,6 +151,12 @@ body {
     width: 300px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: left;
+    transition: transform 0.2s;
+    cursor: pointer;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
   }
   
   .card-author {
@@ -122,4 +177,50 @@ body {
     color: #555;
     line-height: 1.4;
   }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+  }
   
+  .pagination button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .pagination button:disabled {
+    background-color: #eaeaea;
+    cursor: not-allowed;
+  }
+
+  .no-results-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 180px;
+  }
+
+  .loading-spinner {
+    margin-bottom: 180px;
+    width: 50px;
+    height: 50px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #007BFF;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
