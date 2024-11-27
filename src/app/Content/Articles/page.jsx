@@ -8,6 +8,7 @@ import './Articles.css';
 import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Navbar/Navbar';
 import { apiFetch } from '../../../core/auth';
+import Link from 'next/link';
 
 function Articles() {
   return (
@@ -145,6 +146,7 @@ function Content() {
               <h2 className="card-title">{item.title}</h2>
               <p className="card-description">{item.preview}</p>
               <p className="card-author">Autor: {item.author_name}</p>
+              <a to={`/Content/ViewArticle?id=${item.id}`}>ver</a>
             </div>
           ))
         ) : (

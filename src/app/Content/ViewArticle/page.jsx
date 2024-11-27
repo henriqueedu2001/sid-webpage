@@ -40,7 +40,27 @@ function Content() {
 
     return (
         <div>
-            <p> article_id: {articleID}</p>
+            {ArticleText(articleData)}
+        </div>
+    );
+}
+
+function ArticleText(article_data) {
+    if(!article_data) {
+        return <div></div>
+    }
+
+    const title = article_data['title']
+    const section = article_data['section']
+    const content = article_data['content']
+    const updated_at = article_data['updated_at']
+    
+    return (
+        <div>
+            <p>title: {title}</p>
+            <p>section: {section}</p>
+            <p>content: {content}</p>
+            <p>updated_at: {updated_at}</p>
         </div>
     );
 }
