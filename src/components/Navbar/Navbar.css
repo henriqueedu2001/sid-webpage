@@ -20,7 +20,7 @@
 }
 
 .navbar ul li.active {
-    text-decoration: underline; /* Sublinha o item ativo */
+    text-decoration: underline;
     text-decoration-color: white;
 }
 

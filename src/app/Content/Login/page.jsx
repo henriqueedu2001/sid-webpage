@@ -13,7 +13,7 @@ function Login() {
 
   return (
     <div className='page-container'>
-      <Navbar/>
+      <Navbar section="login"/>
       {Content()}
       <Footer/>
     </div>
