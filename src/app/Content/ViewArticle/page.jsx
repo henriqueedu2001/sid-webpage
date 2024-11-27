@@ -4,6 +4,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState, Suspense } from 'react';
 import { apiFetch } from '../../../core/auth';
 
+import './ViewArticle.css';
+
 import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Navbar/Navbar';
 
@@ -39,7 +41,7 @@ function Content() {
 
 
     return (
-        <div>
+        <div className='article-text-content'>
             {ArticleText(articleData)}
         </div>
     );
@@ -54,13 +56,15 @@ function ArticleText(article_data) {
     const section = article_data['section']
     const content = article_data['content']
     const updated_at = article_data['updated_at']
+    const html_content = '<h1>Artigo</h1><p>conteúdo do artigo</p>'
     
     return (
-        <div>
+        <div className='article-text-div'>
             <p>title: {title}</p>
             <p>section: {section}</p>
             <p>content: {content}</p>
             <p>updated_at: {updated_at}</p>
+            <div dangerouslySetInnerHTML={{ __html: html_content }} />
         </div>
     );
 }

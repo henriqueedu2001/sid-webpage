@@ -1,0 +1,9 @@
+.article-text-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.article-text-div {
+    width: 80vw;
+}
