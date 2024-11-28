@@ -91,7 +91,7 @@ function Content() {
   const handleGenerateMap = async () => {
     setIsLoading(true);
 
-    const apiBaseUrl = "http://localhost:8000";
+    const apiBaseUrl = "https://sid-api-yrbb.onrender.com";
     const fetchAggregatedData = async () => {
       try {
         const endpoint =
@@ -154,7 +154,7 @@ function Content() {
           value={dataType}
           onChange={(e) => setDataType(e.target.value)}
         >
-          <option value="notifications">Casos</option>
+          <option value="notifications">Casos confirmados de dengue</option>
           <option value="workedProperties">Imóveis trabalhados</option>
         </select>
       </label>
