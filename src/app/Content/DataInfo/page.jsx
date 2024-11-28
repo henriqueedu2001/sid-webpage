@@ -7,7 +7,7 @@ const HeatMap = dynamic(() => import('@/components/HeatMap/HeatMap'), { ssr: fal
 
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
-import './data.css';
+import './DataInfo.css';
 
 export default function Page() {
   return (

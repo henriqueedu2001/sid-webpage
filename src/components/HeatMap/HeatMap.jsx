@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { csv } from 'd3-fetch';
 import { scaleSequential } from 'd3-scale';
 import { interpolateYlOrRd } from 'd3-scale-chromatic';
 
@@ -46,7 +45,6 @@ const HeatMap = ({ geoData, aggregatedData }) => {
   };
 
   const addLegend = map => {
-    // Remove existing legends
     const existingLegends = document.querySelectorAll('.legend');
     existingLegends.forEach(legend => legend.remove());
 
@@ -56,7 +54,6 @@ const HeatMap = ({ geoData, aggregatedData }) => {
       const div = L.DomUtil.create('div', 'info legend');
       const colorScale = scaleSequential(interpolateYlOrRd).domain([0, 1000]); // Alterado para 0 a 1000
 
-      // Gradiente
       const gradientDiv = L.DomUtil.create('div', 'legend-gradient');
       gradientDiv.style.height = '30px';
       gradientDiv.style.width = '200px';
@@ -69,7 +66,6 @@ const HeatMap = ({ geoData, aggregatedData }) => {
 
       div.appendChild(gradientDiv);
 
-      // Rótulos
       const labelsDiv = L.DomUtil.create('div', 'legend-labels');
       labelsDiv.style.display = 'flex';
       labelsDiv.style.justifyContent = 'space-between';
