@@ -15,7 +15,7 @@ function Contribute() {
 
 function Content(){
   return(
-    <div className="container">
+    <div className="contribute-container">
         <section className='info-section'></section>
         <h1 className='section-title'>Por que se cadastrar?</h1>
         <p className='section-text'>

@@ -72,7 +72,7 @@ function Card({ icon, label, title, customClass, section }) {
   };
 
   return (
-    <div className={`card ${customClass}`} onClick={handleClick}>
+    <div className={`homepage-card ${customClass}`} onClick={handleClick}>
       <Image src={icon} alt={label} width={50} height={50} className="icon" />
       <h2>{title}</h2>
     </div>
