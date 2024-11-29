@@ -3,14 +3,14 @@
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 
 import './Versions.css';
 
 import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Navbar/Navbar';
-import { apiFetch } from '../../../../core/auth';
+import { apiFetch } from '../../../core/auth';
 
 function Versions() {
   return (
@@ -31,7 +31,6 @@ function Content() {
     const [articleIdFromUrl, setArticleIdFromUrl] = useState('');
 
     const searchParams = useSearchParams();
-    const router = useRouter();
   
     useEffect(() => {
       const idFromUrl = searchParams.get('article_id');
@@ -73,14 +72,14 @@ function Content() {
                             <div key={item.id} className="card">
                             <div className="title-wrapper">
                                 <h2 className="card-title">Versão {item.version_number}</h2>
-                                <Link href={{ pathname: `/Content/Articles/Version`, query: { version_id: item.id , article_id:  articleIdFromUrl} }}>Comparar com atual</Link>
+                                <Link href={{ pathname: `/Content/Version`, query: { version_id: item.id , article_id:  articleIdFromUrl} }}>Comparar com atual</Link>
                             </div>
                             <p className="card-description">Editado em {format(new Date(item.created_at), "dd 'de' MMMM 'de' yyyy, HH:mm:ss", { locale: ptBR })}</p>
                             <p className="card-author">Editado por {item.editor_name}</p>
                             </div>
                         ))
                         ) : (
-                        <p className="no-results-message">Nenhum artigo correspondente encontrado.</p>
+                        <p className="no-results-message">A versão atual é a única existente.</p>
                         )}
                     </div>
                 </div>

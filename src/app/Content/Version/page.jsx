@@ -10,7 +10,7 @@ import './Version.css';
 import DiffChecker from '@/components/DiffChecker/DiffChecker';
 import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Navbar/Navbar';
-import { apiFetch } from '../../../../core/auth';
+import { apiFetch } from '../../../core/auth';
 
 function Version() {
   return (
@@ -55,7 +55,7 @@ function Content() {
     }
 
     function returnToVersions() {
-        router.push(`/Content/Articles/Versions?article_id=${articleIdFromUrl}`);
+        router.push(`/Content/Versions?article_id=${articleIdFromUrl}`);
     }
 
     return (
