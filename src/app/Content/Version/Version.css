@@ -28,7 +28,7 @@ body {
     flex: 1;
   }
 
-  .datas-container {
+  .dates-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -38,15 +38,15 @@ body {
     margin-bottom: 16px;
   }
   
-  .data-antiga {
+  .old-date {
     color: #F00;
   }
 
-  .data-nova {
+  .new-date {
     color: rgb(0, 150, 0);
   }
 
-  .botoes-container {
+  .button-container {
     display: flex;
     justify-content: space-between;
     gap: 10px;
@@ -54,8 +54,8 @@ body {
     padding: 10px;
   }
   
-  .botao-antigo,
-  .botao-novo {
+  .old-button,
+  .new-button {
     flex: 1;
     padding: 10px;
     font-size: 16px;
@@ -68,11 +68,10 @@ body {
     transition: background-color 0.3s;
   }
   
-  .botao-antigo:hover,
-  .botao-novo:hover {
+  .old-button:hover,
+  .new-button:hover {
     background-color: #0056b3;
   }
-  
 
   .loading-spinner {
     width: 50px;

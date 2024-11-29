@@ -65,20 +65,20 @@ function Content() {
             ) :
             <div>
                 <DiffChecker oldText={versionData.title} newText={currentData.title} classType='diffContainerTitle' />
-                <div className="datas-container">
-                    <div className="data-antiga">
+                <div className="dates-container">
+                    <div className="old-date">
                         Versão antiga criada em <b>{format(new Date(versionData.created_at), "dd 'de' MMMM 'de' yyyy, HH:mm:ss", { locale: ptBR })}</b>
                     </div>
-                    <div className="data-nova">
+                    <div className="new-date">
                         Versão atual vigente desde <b>{format(new Date(currentData.updated_at), "dd 'de' MMMM 'de' yyyy, HH:mm:ss", { locale: ptBR })}</b>
                     </div>
                 </div>
                 <DiffChecker oldText={versionData.content} newText={currentData.content} classType='diffContainer' />
-                <div className="botoes-container">
-                    <button className="botao-antigo" onClick={returnToVersions}>
+                <div className="button-container">
+                    <button className="old-button" onClick={returnToVersions}>
                         Voltar para listagem de versões
                     </button>
-                    <button className="botao-novo">
+                    <button className="new-button">
                         Voltar para versão atualizada
                     </button>
                 </div>
