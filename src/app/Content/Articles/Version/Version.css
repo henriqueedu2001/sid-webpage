@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    width: auto;
+    overflow-x: hidden;
+  }
+
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .version-container{
+    margin-left: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 50vh;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    padding-right: 80px;
+    padding-left: 80px;
+    background-color: #f5f5f5;
+    flex: 1;
+  }
+
+  .datas-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .data-antiga {
+    color: #F00;
+  }
+
+  .data-nova {
+    color: rgb(0, 150, 0);
+  }
+
+  .botoes-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .botao-antigo,
+  .botao-novo {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+  
+  .botao-antigo:hover,
+  .botao-novo:hover {
+    background-color: #0056b3;
+  }
+  
+
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #007BFF;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 180px;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
