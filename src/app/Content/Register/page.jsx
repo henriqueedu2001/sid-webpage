@@ -44,13 +44,17 @@ function Content() {
         body: JSON.stringify(registerData),
       };
       const response = await fetch(apiUrl, dataSent);
-      if (!response.ok) throw new Error('Erro ao cadastrar usuário');
+      if (!response.ok) {
+        const errorData = await response.json();
+        const errorMessage = errorData.detail || 'Erro ao cadastrar usuário.';
+        throw new Error(errorMessage);
+      }
       const data = await response.json();
       console.log('Cadastro bem-sucedido:', data);
-      setSuccessModalVisible(true); // Exibir o modal de sucesso
+      setSuccessModalVisible(true);
     } catch (error) {
-      console.error('Erro ao fazer o cadastro:', error);
-      setError('Erro ao cadastrar usuário. Por favor, tente novamente.');
+      console.error('Erro ao fazer o cadastro:', error.message);
+      setError(error.message);
     }
   };
 
@@ -99,7 +103,7 @@ function Content() {
             onChange={(e) => setMotivation(e.target.value)}
           />
         </div>
-        {error && <div className="error-box">{error}</div>}
+        {error && <div className="error-box">{error}</div>} {/* Exibe a mensagem de erro */}
         <div className="button-group">
           <button onClick={register} className="login-button">Criar conta</button>
           <a className="login-button" href="/Content/Login">Já tenho conta</a>
