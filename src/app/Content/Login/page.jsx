@@ -9,6 +9,8 @@ import Footer from '@/components/Footer/Footer';
 
 import './Login.css';
 
+// NOTE: E-mail here is reffered as Username because of OAuth2 login form format
+
 function Login() {
 
   return (
@@ -27,7 +29,7 @@ function Content() {
 
   const login = () => {
     console.log('Initiating login');
-    console.log('Username: ', username, 'password: ', password);
+    console.log('E-mail: ', username);
     validateCredentials(username, password);
   }
 
@@ -72,12 +74,10 @@ function Content() {
   return (
     <div className="login-container">
       <div className="login-form">
-        {/* Profile icon */}
         <div className="profile-image">
           <img src="/icons/profile.png" alt="Profile Icon"/>
         </div>
         
-        {/* Email input */}
         <div className="input-group">
           <label htmlFor="email">E-mail:</label>
           <input 
@@ -87,7 +87,6 @@ function Content() {
             onChange={(e) => setUsername(e.target.value)}/>
         </div>
         
-        {/* Password input */}
         <div className="input-group">
           <label htmlFor="password">Senha:</label>
           <input 
@@ -102,10 +101,9 @@ function Content() {
           {errorLabel(error)}
         </div>
 
-        {/* Buttons */}
         <div className="button-group">
           <button onClick={login} className="login-button">Entrar</button>
-          <button className="login-button">Não tenho conta</button>
+          <a className="login-button" href='/Content/Register'>Não tenho conta</a>
         </div>
 
       </div>
