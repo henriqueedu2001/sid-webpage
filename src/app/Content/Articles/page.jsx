@@ -8,7 +8,6 @@ import './Articles.css';
 import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Navbar/Navbar';
 import { apiFetch } from '../../../core/auth';
-import Link from 'next/link';
 
 function Articles() {
   return (
