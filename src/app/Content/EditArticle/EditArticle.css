@@ -3,7 +3,6 @@
   flex-direction: column; /* Coloca todos os elementos em uma coluna */
   justify-content: flex-start; /* Alinha ao topo */
   align-items: flex-start; /* Alinha à esquerda os elementos internos */
-  width: 100vw;
   height: 80vh;
   padding: 20px;
   background-color: #f5f5f5;
@@ -18,30 +17,29 @@ h2 {
 .custom-line {
   height: 2px;
   background-color: #333;
-  width: 75%; /* Ajusta o comprimento da linha para preencher o container */
+  width: 8vw; /* Ajusta o comprimento da linha para preencher o container */
   margin-bottom: 2.5vh;
   margin-top: 0.5vh;
 }
 
 input.title-input,
 input.section-input {
-  width: 100%; /* Mantém a largura dos campos igual à largura do container */
+  width: 30vw; /* Mantém a largura dos campos igual à largura do container */
   padding: 10px;
   font-size: 18px;
   margin-bottom: 20px;
 }
 
 .text-editor-div {
-  height: 300px;
-  width: 100%;
+  min-height: 10vh;
+  width: 95vw;
   border: 1px solid #ccc;
-  border-radius: 8px;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .ql-toolbar {
-  width: 100%;
+  width: 95vw;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   background-color: #f5f5f5;
@@ -54,16 +52,19 @@ input.section-input {
 }
 
 .ql-editor {
-  min-height: 200px;
   font-size: 16px;
   line-height: 1.6;
   padding: 15px;
 }
 
 button {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 10px 20px;
-  font-size: 18px;
-  align-self: flex-start; /* Mantém o botão alinhado à esquerda */
+  width: 100px;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #32689a; /* Blue color for the buttons */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.1''s step-end;
 }
