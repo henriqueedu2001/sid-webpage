@@ -6,7 +6,6 @@ import { apiFetch } from '../../../core/auth';
 import './ViewArticle.css';
 import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Navbar/Navbar';
-import QuillTextEditor from './QuillTextEditor';
 
 function ViewArticle() {
     return (
