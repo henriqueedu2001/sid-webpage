@@ -13,7 +13,7 @@ const QuillTextEditor = ({ value, onChange, placeholder }) => {
 
         const toolbarOptions = [
           [{ 'font': [] }],
-          [{ 'header': [1, 2, 3, false] }],
+          [{ 'header': [1, 2, 3, 4, false] }],
           ['bold', 'italic', 'underline', 'strike'],
           [{ 'color': [] }, { 'background': [] }],
           [{ 'script': 'sub' }, { 'script': 'super' }],
