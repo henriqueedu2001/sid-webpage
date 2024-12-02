@@ -2,8 +2,40 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 2.5vh;
+    margin-top: 2.5vh;
 }
 
 .article-text-div {
     width: 80vw;
+
 }
+
+.article-info{
+    width: 80vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: column;
+}
+  
+.article-title{
+    font-size: 36pt;
+    font-weight: 600;
+}
+
+.article-section{
+    font-size: 18pt;
+    font-weight: 600;
+}
+
+.article-content{
+    font-size: 18pt;
+}
+
+.custom-line {
+    height: 2px;
+    background-color: #333;
+    width: 25vw; /* Ajusta o comprimento da linha para preencher o container */
+    margin-bottom: 2.5vh;
+    margin-top: 0.5vh;
+  }

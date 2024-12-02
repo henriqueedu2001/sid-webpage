@@ -56,15 +56,17 @@ function ArticleText(article_data) {
     const section = article_data['section']
     const content = article_data['content']
     const updated_at = article_data['updated_at']
-    const html_content = '<h1>Artigo</h1><p>conteúdo do artigo</p>'
     
     return (
         <div className='article-text-div'>
-            <p>title: {title}</p>
-            <p>section: {section}</p>
-            <p>content: {content}</p>
-            <p>updated_at: {updated_at}</p>
-            <div dangerouslySetInnerHTML={{ __html: html_content }} />
+
+            <p className='article-title'>{title}</p>
+            <hr className="custom-line" />
+
+            <p className='article-section'>Seção: {section}</p>
+            <p>Útlima atualização: {updated_at}</p>
+
+            <div className='article-content' dangerouslySetInnerHTML={{ __html: content }} />
         </div>
     );
 }

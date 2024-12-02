@@ -44,6 +44,10 @@ function Content() {
     setContent(apiData.content);
   }
 
+  const redirectToView = () => {
+    router.push(`/Content/ViewArticle?id=${articleID}`);
+  }
+
   const handleSave = async () => {
     const updatedArticle = {
       id: articleID, // Include 'id' field
@@ -51,7 +55,7 @@ function Content() {
       section,
       content,
     };
-  
+
     try {
       const response = await apiFetch(`https://sid-api-yrbb.onrender.com/articles/${articleID}`, {
         method: 'PUT',
@@ -73,7 +77,7 @@ function Content() {
     } catch (error) {
       // Handle network errors
       console.error('Error:', error);
-      alert('An error occurred while saving the article.');
+      alert(`An error occurred while saving the article. ${error}` );
     }
   };
 
@@ -110,7 +114,10 @@ function Content() {
       placeholder="Editar Conteúdo"
     />
 
-    <button onClick={handleSave}>Save</button>
+    <div className='button-group'>
+    <button className='button'  onClick={handleSave}>Save</button>
+    <button className='button'  onClick={redirectToView}>Visualizar Artigo</button>
+    </div>
   </div>
   );
 }
