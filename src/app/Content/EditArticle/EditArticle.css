@@ -1,11 +1,78 @@
 .text-editor-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
+  display: flex;
+  flex-direction: column; /* Coloca todos os elementos em uma coluna */
+  justify-content: flex-start; /* Alinha ao topo */
+  align-items: flex-start; /* Alinha à esquerda os elementos internos */
+  height: 80vh;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+h2 {
+  font-size: 24px;
+  margin-top: 20px;
+  text-align: left; /* Mantém o título alinhado à esquerda */
+}
+
+.custom-line {
+  height: 2px;
+  background-color: #333;
+  width: 8vw; /* Ajusta o comprimento da linha para preencher o container */
+  margin-bottom: 2.5vh;
+  margin-top: 0.5vh;
+}
+
+input.title-input,
+input.section-input {
+  width: 30vw; /* Mantém a largura dos campos igual à largura do container */
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 
 .text-editor-div {
-    width: 80vw;
+  min-height: 10vh;
+  width: 95vw;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ql-toolbar {
+  width: 95vw;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: #f5f5f5;
+}
+
+.ql-container {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin-bottom: 3vh !important;
+}
+
+.ql-editor {
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 15px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.button-group .button {
+  width: 150px;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #32689a; /* Blue color for the buttons */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.1''s step-end;
+  margin-right: 20px;
 }
