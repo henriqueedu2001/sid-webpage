@@ -1,9 +1,7 @@
-/* Global Styles */
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5; /* Light background color */
+    background-color: #f5f5f5;
   }
   
   .error-box {
@@ -14,15 +12,13 @@ body {
     background-color: #ffe5e5;
   }
 
-  /* Login Container */
   .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
   }
   
-  /* Login Form */
   .login-form {
     display: flex;
     flex-direction: column;
@@ -36,7 +32,6 @@ body {
   }
 
 
-  /* Profile Icon */
   .profile-image {
     width: 150px;
     height: 150px;
@@ -47,14 +42,13 @@ body {
   }
   
   .profile-image img {
-    max-width: 100%; /* Set a maximum width to avoid the image getting too large */
-    height: auto; /* Maintain aspect ratio */
+    max-width: 100%;
+    height: auto;
     border-radius: 50%;
     margin-bottom: 20px;
-    object-fit: cover; /* Cover the image */
+    object-fit: cover;
   }
   
-  /* Input Group */
   .input-group {
     width: 75%;
     margin-bottom: 25px;
@@ -74,7 +68,6 @@ body {
     border-radius: 5px;
   }
   
-  /* Button Group */
   .button-group {
     display: flex;
     justify-content: space-between;
@@ -86,15 +79,17 @@ body {
     width: 45%;
     padding: 10px;
     font-size: 1rem;
-    background-color: #32689a; /* Blue color for the buttons */
+    background-color: #32689a;
     color: white;
     border: none;
     border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
     cursor: pointer;
     transition: background-color 0.1''s step-end;
   }
   
   .login-button:hover {
-    background-color: #2a4373; /* Darker shade on hover */
+    background-color: #2a4373;
   }
   

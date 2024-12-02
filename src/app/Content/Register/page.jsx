@@ -1,21 +1,17 @@
 "use client";
 
-import React from 'react'
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 
-
 import './Register.css';
 
 function Register() {
-
   return (
-
     <div className='page-container'>
-      <Navbar />
-      {Content()}
+      <Navbar section="login" />
+      <Content />
       <Footer />
     </div>
   );
@@ -23,132 +19,138 @@ function Register() {
 
 function Content() {
   const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [motivation, setmotivation] = useState('');
-  const [error, setError] = useState('no error');
+  const [fullName, setFullName] = useState('');
+  const [profession, setProfession] = useState('');
+  const [motivation, setMotivation] = useState('');
+  const [bio, setBio] = useState('');
+  const [error, setError] = useState(null);
+  const [successModalVisible, setSuccessModalVisible] = useState(false);
 
-  const register = () => {
-    console.log('Initiating register');
-    console.log('Username: ', username, 'email:', email, 'password: ', password, 'motivation: ', motivation);
-    registerCredentials(username, email, password, motivation);
-  }
+  const register = async () => {
+    console.log('Creating account');
+    console.log('E-mail: ', username, 'name: ', fullName);
 
-  async function registerCredentials(username, email, password, motivation) {
-    const apiUrl = 'https://sid-api-yrbb.onrender.com/users/';
-    // const formData = new URLSearchParams();
-    // formData.append('full_name', username);
-    // formData.append('email', email);
-    // formData.append('password', password);
-    // formData.append('motivation', motivation);
-
+    const apiUrl = 'https://sid-api-yrbb.onrender.com/users';
     const registerData = {
-      'full_name': username,
-      'email': email,
-      'password': password,
-      'motivation': motivation,
-    } 
+      full_name: fullName,
+      email: username,
+      password,
+      motivation,
+      profession,
+      bio,
+    };
 
     try {
       const dataSent = {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(registerData)
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(registerData),
       };
       const response = await fetch(apiUrl, dataSent);
-
       if (!response.ok) {
         const errorData = await response.json();
-        const errorMessage = errorData.detail;
-        setError(errorMessage);
-        throw new Error('Erro ao cadastrar usuário');
+        const errorMessage = errorData.detail || 'Erro ao cadastrar usuário.';
+        throw new Error(errorMessage);
       }
-
       const data = await response.json();
-
-      console.log('cadastro bem-sucedido:', data);
-      return { success: true, message: 'cadastro bem-sucedido!' };
-
+      console.log('Cadastro bem-sucedido:', data);
+      setSuccessModalVisible(true);
     } catch (error) {
-      return { success: false, message: error.message };
+      console.error('Erro ao fazer o cadastro:', error.message);
+      setError(error.message);
     }
-  }
+  };
+
+  const closeModal = () => {
+    setSuccessModalVisible(false);
+  };
 
   return (
     <div className="login-container">
       <div className="login-form">
-        {/* Profile icon */}
         <div className="profile-image">
           <img src="/icons/profile.png" alt="Profile Icon" />
         </div>
-
-        {/* Name input */}
         <div className="input-group">
-          <label htmlFor="name">Nome:</label>
+          <label htmlFor="name">Nome completo:</label>
           <input
             type="text"
             id="name"
             name="name"
-            onChange={(e) => setUsername(e.target.value)} />
+            onChange={(e) => setFullName(e.target.value)}
+          />
         </div>
-
-        {/* Email input */}
         <div className="input-group">
           <label htmlFor="email">E-mail:</label>
           <input
             type="email"
             id="email"
             name="email"
-            onChange={(e) => setEmail(e.target.value)} />
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </div>
-
-        {/* Password input */}
         <div className="input-group">
           <label htmlFor="password">Senha:</label>
           <input
             type="password"
             id="password"
             name="password"
-            onChange={(e) => setPassword(e.target.value)} />
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
-
-        {/* Motivation input */}
         <div className="input-group">
-          <label htmlFor="text">Motivação:</label>
+          <label htmlFor="profession">Sua profissão ou atividade:</label>
+          <input
+            id="profession"
+            name="profession"
+            onChange={(e) => setProfession(e.target.value)}
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="motivation">Motivação:</label>
           <textarea
-            type="text"
             id="motivation"
             name="motivation"
-            onChange={(e) => setmotivation(e.target.value)} />
+            onChange={(e) => setMotivation(e.target.value)}
+          />
         </div>
-
-        <div>
-          {errorLabel(error)}
+        <div className="input-group">
+          <label htmlFor="bio">Descrição do perfil:</label>
+          <textarea
+            id="bio"
+            name="bio"
+            onChange={(e) => setBio(e.target.value)}
+          />
         </div>
-
-        {/* Buttons */}
+        {error && <div className="error-box">{error}</div>}
         <div className="button-group">
-          <button onClick={register} className="register-button">Cadastrar</button>
-          <button className="register-button">Já tenho conta</button>
+          <button onClick={register} className="login-button">Criar conta</button>
+          <a className="login-button" href="/Content/Login">Já tenho conta</a>
         </div>
       </div>
+
+      {successModalVisible && (
+        <div className="modal">
+          <div className="modal-content">
+            <h3>Conta criada com sucesso!</h3>
+            <p>Você pode acessar sua conta na página de login.</p>
+            <div className="modal-actions">
+              <button
+                className="confirm-btn"
+                onClick={() => (window.location.href = '/Content/Login')}
+              >
+                Ir para login
+              </button>
+              <button className="cancel-btn" onClick={closeModal}>
+                Fechar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-function errorLabel(error) {
-  if(error == 'no error') {
-    return (
-      <></>
-    );    
-  }
-  return (
-    <div className='error-box'>
-      <p>{error}</p>
-    </div>
-  );
-}
-
-export default Register
+export default Register;

@@ -9,6 +9,8 @@ import Footer from '@/components/Footer/Footer';
 
 import './Login.css';
 
+// NOTE: E-mail here is reffered as Username because of OAuth2 login form format
+
 function Login() {
 
   return (
@@ -20,6 +22,31 @@ function Login() {
   );
 }
 
+async function fetchUserDetails(token) {
+  const apiUrl = 'https://sid-api-yrbb.onrender.com/users/me';
+
+  try {
+      const response = await fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`
+          }
+      });
+
+      if (!response.ok) {
+          throw new Error('Erro ao obter informações do usuário');
+      }
+
+      const user = await response.json();
+      return user;
+  } catch (error) {
+      console.error('Erro ao buscar detalhes do usuário:', error);
+      throw error;
+  }
+}
+
+
+
 function Content() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -27,57 +54,57 @@ function Content() {
 
   const login = () => {
     console.log('Initiating login');
-    console.log('Username: ', username, 'password: ', password);
+    console.log('E-mail: ', username);
     validateCredentials(username, password);
   }
 
   async function validateCredentials(username, password) {
-    const apiUrl = 'https://sid-api-yrbb.onrender.com/users/token/';
+    const apiUrl = 'https://sid-api-yrbb.onrender.com/users/token';
     const formData = new URLSearchParams();
     formData.append('username', username);
     formData.append('password', password);
 
     try {
-      const dataSent = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: formData.toString()
-    };
+        const dataSent = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: formData.toString()
+        };
         const response = await fetch(apiUrl, dataSent);
 
         if (!response.ok) {
-          const errorData = await response.json();
-          const errorMessage = errorData.detail;
-          setError(errorMessage);
-          throw new Error('Credenciais inválidas');
+            const errorData = await response.json();
+            const errorMessage = errorData.detail;
+            setError(errorMessage);
+            throw new Error('Credenciais inválidas');
         }
 
         const data = await response.json();
-        const token = data.access_token
+        const token = data.access_token;
 
         localStorage.setItem('authToken', token);
 
         console.log('Login bem-sucedido:', data);
-        window.location.href = '/Content/Profile';
-        return { success: true, message: 'Login bem-sucedido!' };
 
+        const user = await fetchUserDetails(token);
+
+        window.location.href = `/Content/User/${user.id}`;
     } catch (error) {
         console.error('Erro ao fazer login:', error);
-        return { success: false, message: error.message };
+        setError(error.message);
     }
 }
+
 
   return (
     <div className="login-container">
       <div className="login-form">
-        {/* Profile icon */}
         <div className="profile-image">
           <img src="/icons/profile.png" alt="Profile Icon"/>
         </div>
         
-        {/* Email input */}
         <div className="input-group">
           <label htmlFor="email">E-mail:</label>
           <input 
@@ -87,7 +114,6 @@ function Content() {
             onChange={(e) => setUsername(e.target.value)}/>
         </div>
         
-        {/* Password input */}
         <div className="input-group">
           <label htmlFor="password">Senha:</label>
           <input 
@@ -102,10 +128,9 @@ function Content() {
           {errorLabel(error)}
         </div>
 
-        {/* Buttons */}
         <div className="button-group">
           <button onClick={login} className="login-button">Entrar</button>
-          <button className="login-button">Não tenho conta</button>
+          <a className="login-button" href='/Content/Register'>Não tenho conta</a>
         </div>
 
       </div>

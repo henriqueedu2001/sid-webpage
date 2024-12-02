@@ -43,6 +43,23 @@
     list-style-type: none;
 }
 
+.navbar .user-info {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .admin-icon {
+    margin-left: 80px;
+    text-decoration: none;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+.navbar .admin-icon:hover {
+    color: #CCCCCC;
+}
+
+
 .navbar li {
     display: flex;
     justify-content: center;

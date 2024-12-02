@@ -1,7 +1,27 @@
-import React from 'react'
-import './Navbar.css'
+"use client";
+
+import React, { useEffect, useState } from 'react';
+import './Navbar.css';
+import { getCurrentUser } from '../../core/auth';
 
 function Navbar({ section }) {
+  const [userName, setUserName] = useState(null);
+  const [userRole, setUserRole] = useState(null);
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const currentUser = await getCurrentUser();
+      if (currentUser) {
+        const firstName = currentUser.full_name?.split(' ')[0] || 'Usuário';
+        setUserName(firstName);
+        setUserRole(currentUser.role);
+        setUserId(currentUser.id)
+      }
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <nav className="navbar">
@@ -10,17 +30,25 @@ function Navbar({ section }) {
           <a href='/'>SID</a>
         </div>
         <ul>
-          <li className={section === 'articles' ? 'active' : ''} ><a href='/Content/Articles'>Artigos</a></li>
-          <li className={section === 'data' ? 'active' : ''} ><a href='/Content/Data'>Dados</a></li>
-          <li className={section === 'contribute' ? 'active' : ''} ><a href='/Content/Contribute'>Contribua</a></li>
-          <li className={section === 'login' ? 'active' : ''} ><a href='/Content/Login'>Acesso</a></li>
+          <li className={section === 'articles' ? 'active' : ''}><a href='/Content/Articles'>Artigos</a></li>
+          <li className={section === 'data' ? 'active' : ''}><a href='/Content/Data'>Dados</a></li>
+          <li className={section === 'contribute' ? 'active' : ''}><a href='/Content/Contribute'>Contribua</a></li>
+          <li className={section === 'login' ? 'active' : ''}>
+            {userName ? (
+              <div className="user-info">
+                <a href={`/Content/User/${userId}`}>{userName}</a>
+                {userRole === 'admin' && (
+                  <a href='/Admin/Users' className='admin-icon'>⚙️</a>
+                )}
+              </div>
+            ) : (
+              <a href='/Content/Login'>Acesso</a>
+            )}
+          </li>
         </ul>
-        <div>
-
-        </div>
       </div>
     </nav>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
