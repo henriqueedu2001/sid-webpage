@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, Suspense, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import Footer from '@/components/Footer/Footer';
@@ -14,9 +14,11 @@ import { apiFetch } from '@/core/auth';
 function EditArticle() {
   return (
     <div className="page-container">
-      <Navbar section="articles" />
-      <Content />
-      <Footer />
+      <Navbar section="articles"/>
+      <Suspense>
+        <Content/>
+      </Suspense>
+      <Footer/>
     </div>
   );
 }
