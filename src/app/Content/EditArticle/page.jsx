@@ -9,6 +9,7 @@ import Navbar from '@/components/Navbar/Navbar';
 import './EditArticle.css';
 import 'quill/dist/quill.snow.css'; // Import Quill them
 import QuillTextEditor from './QuillTextEditor';
+import { apiFetch } from '@/core/auth';
 
 function EditArticle() {
   return (
@@ -45,24 +46,34 @@ function Content() {
 
   const handleSave = async () => {
     const updatedArticle = {
+      id: articleID, // Include 'id' field
       title,
       section,
       content,
     };
-
-    const response = await fetch(`https://sid-api-yrbb.onrender.com/articles/${articleID}`, {
-      method: 'PUT', // Adjust method according to your API
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedArticle),
-    });
-
-    if (response.ok) {
-      alert('Article saved successfully!');
-      // Optionally redirect or update UI
-    } else {
-      alert('Failed to save the article.');
+  
+    try {
+      const response = await apiFetch(`https://sid-api-yrbb.onrender.com/articles/${articleID}`, {
+        method: 'PUT',
+        headers: {
+          'Accept': 'application/json', // Include 'Accept' header
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedArticle),
+      });
+  
+      if (response.ok) {
+        alert('Article saved successfully!');
+        // Optionally redirect or update UI
+      } else {
+        // Handle server errors
+        const errorData = await response.json();
+        alert(`Failed to save the article: ${errorData.message || response.statusText}`);
+      }
+    } catch (error) {
+      // Handle network errors
+      console.error('Error:', error);
+      alert('An error occurred while saving the article.');
     }
   };
 
