@@ -4,6 +4,7 @@
     align-items: center;
     margin-bottom: 2.5vh;
     margin-top: 2.5vh;
+    flex: 1;
 }
 
 .article-text-div {
