@@ -22,6 +22,31 @@ function Login() {
   );
 }
 
+async function fetchUserDetails(token) {
+  const apiUrl = 'https://sid-api-yrbb.onrender.com/users/me';
+
+  try {
+      const response = await fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`
+          }
+      });
+
+      if (!response.ok) {
+          throw new Error('Erro ao obter informações do usuário');
+      }
+
+      const user = await response.json();
+      return user;
+  } catch (error) {
+      console.error('Erro ao buscar detalhes do usuário:', error);
+      throw error;
+  }
+}
+
+
+
 function Content() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -34,42 +59,44 @@ function Content() {
   }
 
   async function validateCredentials(username, password) {
-    const apiUrl = 'https://sid-api-yrbb.onrender.com/users/token/';
+    const apiUrl = 'https://sid-api-yrbb.onrender.com/users/token';
     const formData = new URLSearchParams();
     formData.append('username', username);
     formData.append('password', password);
 
     try {
-      const dataSent = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: formData.toString()
-    };
+        const dataSent = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: formData.toString()
+        };
         const response = await fetch(apiUrl, dataSent);
 
         if (!response.ok) {
-          const errorData = await response.json();
-          const errorMessage = errorData.detail;
-          setError(errorMessage);
-          throw new Error('Credenciais inválidas');
+            const errorData = await response.json();
+            const errorMessage = errorData.detail;
+            setError(errorMessage);
+            throw new Error('Credenciais inválidas');
         }
 
         const data = await response.json();
-        const token = data.access_token
+        const token = data.access_token;
 
         localStorage.setItem('authToken', token);
 
         console.log('Login bem-sucedido:', data);
-        window.location.href = '/Content/Profile';
-        return { success: true, message: 'Login bem-sucedido!' };
 
+        const user = await fetchUserDetails(token);
+
+        window.location.href = `/Content/User/${user.id}`;
     } catch (error) {
         console.error('Erro ao fazer login:', error);
-        return { success: false, message: error.message };
+        setError(error.message);
     }
 }
+
 
   return (
     <div className="login-container">

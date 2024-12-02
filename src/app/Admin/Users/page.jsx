@@ -190,7 +190,7 @@ function Content() {
             <div className="actions">
               <button
                 className="view-btn"
-                onClick={() => (window.location.href = `/profile/${user.id}`)}
+                onClick={() => (window.location.href = `/Content/User/${user.id}`)}
               >
                 Ver perfil
               </button>

@@ -7,6 +7,7 @@ import { getCurrentUser } from '../../core/auth';
 function Navbar({ section }) {
   const [userName, setUserName] = useState(null);
   const [userRole, setUserRole] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -15,6 +16,7 @@ function Navbar({ section }) {
         const firstName = currentUser.full_name?.split(' ')[0] || 'Usuário';
         setUserName(firstName);
         setUserRole(currentUser.role);
+        setUserId(currentUser.id)
       }
     }
 
@@ -34,7 +36,7 @@ function Navbar({ section }) {
           <li className={section === 'login' ? 'active' : ''}>
             {userName ? (
               <div className="user-info">
-                <a href='/profile'>{userName}</a>
+                <a href={`/Content/User/${userId}`}>{userName}</a>
                 {userRole === 'admin' && (
                   <a href='/Admin/Users' className='admin-icon'>⚙️</a>
                 )}
