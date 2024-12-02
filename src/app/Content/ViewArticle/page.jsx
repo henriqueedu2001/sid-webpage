@@ -55,7 +55,7 @@ function ArticleText({ article_data, articleID }) {
     };
 
     const redirectToVersions = () => {
-        router.push(`/Content/ArticleVersions?id=${articleID}`);
+        router.push(`/Content/Versions?article_id=${articleID}`);
     };
 
     const { title, section, content, updated_at } = article_data;
