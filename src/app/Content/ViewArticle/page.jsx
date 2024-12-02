@@ -8,6 +8,8 @@ import './ViewArticle.css';
 
 import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Navbar/Navbar';
+import Quill from 'quill';
+import QuillTextEditor from './QuillTextEditor';
 
 function ViewArticle() {
     return (
@@ -52,6 +54,10 @@ function ArticleText(article_data) {
         return <div></div>
     }
 
+    const redirectToEdit = () => {
+        router.push(`/Content/EditArticle?id=${articleID}`);
+      }
+
     const title = article_data['title']
     const section = article_data['section']
     const content = article_data['content']
@@ -66,7 +72,13 @@ function ArticleText(article_data) {
             <p className='article-section'>Seção: {section}</p>
             <p>Útlima atualização: {updated_at}</p>
 
-            <div className='article-content' dangerouslySetInnerHTML={{ __html: content }} />
+            <button className='button'  onClick={redirectToEdit}>Editar artigo</button>
+            
+            <QuillTextEditor
+                value={content}
+            />
+
+            <button className='button'  onClick={redirectToEdit}>Editar artigo</button>
         </div>
     );
 }

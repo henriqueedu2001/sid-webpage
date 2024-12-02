@@ -39,3 +39,34 @@
     margin-bottom: 2.5vh;
     margin-top: 0.5vh;
   }
+
+  .text-editor-div {
+    min-height: 10vh;
+    width: 80vw;
+  }
+  
+  .ql-container {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    margin-bottom: 3vh !important;
+  }
+  
+  .ql-editor {
+    font-size: 18pt;
+    line-height: 1.6;
+    padding: 15px;
+  }
+
+  .button {
+    width: 150px;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #32689a; /* Blue color for the buttons */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.1''s step-end;
+    margin-right: 20px;
+    margin-top: 20px;
+  }
