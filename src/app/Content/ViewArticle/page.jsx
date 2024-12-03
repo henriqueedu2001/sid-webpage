@@ -74,7 +74,6 @@ function ArticleText({ article_data, articleID, userRole, loading }) {
 
     const redirectToEdit = () => {
         router.push(`/Content/EditArticle?id=${articleID}`);
-        window.location.reload();
     };
 
     const redirectToVersions = () => {
@@ -112,7 +111,7 @@ function ArticleText({ article_data, articleID, userRole, loading }) {
             <div className='content'>
                 <div dangerouslySetInnerHTML={{ __html: content }} />
             </div>
-            {!loading && (
+            {(!loading && (userRole == 'admin' || userRole == 'editor')) && (
                 <div className='button-group-view'>
                     <button className='edit-button' onClick={redirectToEdit}>
                         Editar artigo
