@@ -7,6 +7,8 @@ import './ViewArticle.css';
 import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Navbar/Navbar';
 
+import apiBaseUrl from '@/utils/api';
+
 function ViewArticle() {
     return (
         <div className="page-container">
@@ -29,7 +31,7 @@ function Content() {
     }, []);
 
     async function fetchData(article_id) {
-        let url = `https://sid-api-yrbb.onrender.com/articles/${article_id}`;
+        let url = `${apiBaseUrl}/articles/${article_id}`;
         let res = await apiFetch(url);
         let apiData = await res.json();
         setArticleData(apiData);

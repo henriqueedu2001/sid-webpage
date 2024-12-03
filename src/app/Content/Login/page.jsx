@@ -9,6 +9,8 @@ import Footer from '@/components/Footer/Footer';
 
 import './Login.css';
 
+import apiBaseUrl from '@/utils/api';
+
 // NOTE: E-mail here is reffered as Username because of OAuth2 login form format
 
 function Login() {
@@ -23,7 +25,7 @@ function Login() {
 }
 
 async function fetchUserDetails(token) {
-  const apiUrl = 'https://sid-api-yrbb.onrender.com/users/me';
+  const apiUrl = `${apiBaseUrl}/users/me`;
 
   try {
       const response = await fetch(apiUrl, {
@@ -59,7 +61,7 @@ function Content() {
   }
 
   async function validateCredentials(username, password) {
-    const apiUrl = 'https://sid-api-yrbb.onrender.com/users/token';
+    const apiUrl = `${apiBaseUrl}/users/token`;
     const formData = new URLSearchParams();
     formData.append('username', username);
     formData.append('password', password);

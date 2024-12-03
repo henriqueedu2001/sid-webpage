@@ -6,6 +6,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import './HomePage.css';
 
+import {apiBaseUrl} from '../../../utils/api';
+
 function HomePage() {
   return (
     <div className="page-container">

@@ -7,6 +7,8 @@ import Footer from '@/components/Footer/Footer';
 
 import './Register.css';
 
+import apiBaseUrl from '@/utils/api';
+
 function Register() {
   return (
     <div className='page-container'>
@@ -31,7 +33,7 @@ function Content() {
     console.log('Creating account');
     console.log('E-mail: ', username, 'name: ', fullName);
 
-    const apiUrl = 'https://sid-api-yrbb.onrender.com/users';
+    const apiUrl = `${apiBaseUrl}/users`;
     const registerData = {
       full_name: fullName,
       email: username,

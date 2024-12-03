@@ -7,9 +7,11 @@ import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Navbar/Navbar';
 
 import './EditArticle.css';
-import 'quill/dist/quill.snow.css'; // Import Quill them
+import 'quill/dist/quill.snow.css'; // Import Quill theme
 import QuillTextEditor from './QuillTextEditor';
 import { apiFetch } from '@/core/auth';
+
+import apiBaseUrl from '@/utils/api';
 
 function EditArticle() {
   return (
@@ -37,7 +39,7 @@ function Content() {
   }, []);
 
   async function fetchData(article_id) {
-    let url = `https://sid-api-yrbb.onrender.com/articles/${article_id}`;
+    let url = `${apiBaseUrl}/articles/${article_id}`;
     let res = await fetch(url);
     let apiData = await res.json();
     setArticleData(apiData);
@@ -59,7 +61,7 @@ function Content() {
     };
 
     try {
-      const response = await apiFetch(`https://sid-api-yrbb.onrender.com/articles/${articleID}`, {
+      const response = await apiFetch(`${apiBaseUrl}/articles/${articleID}`, {
         method: 'PUT',
         headers: {
           'Accept': 'application/json', // Include 'Accept' header

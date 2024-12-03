@@ -1,3 +1,5 @@
+import apiBaseUrl from '@/utils/api';
+
 export function apiFetch(url, options = {}) {
     const token = localStorage.getItem('authToken');
 
@@ -13,7 +15,7 @@ export async function getCurrentUser() {
     const token = getToken();
     if (!token) return null;
 
-    const apiUrl = `https://sid-api-yrbb.onrender.com/users/me`;
+    const apiUrl = `${apiBaseUrl}/users/me`;
     const sentData = {
         method: 'GET',
         headers: {

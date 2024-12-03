@@ -7,6 +7,8 @@ import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import { apiFetch } from '../../../core/auth';
 
+import apiBaseUrl from '@/utils/api';
+
 function Contribute() {
 
   return (
@@ -44,7 +46,7 @@ function Content() {
     setIsLoading(true);
     const skip = (currentPage - 1) * limit;
 
-    let url = `https://sid-api-yrbb.onrender.com/users?search=${encodeURIComponent(
+    let url = `${apiBaseUrl}/users?search=${encodeURIComponent(
       query
     )}&limit=${limit}&skip=${skip}`;
 
@@ -103,7 +105,7 @@ function Content() {
 
     try {
       const response = await apiFetch(
-        `https://sid-api-yrbb.onrender.com/users/${userToDelete.id}`,
+        `${apiBaseUrl}/users/${userToDelete.id}`,
         {
           method: "DELETE",
         }
@@ -128,7 +130,7 @@ function Content() {
 
     try {
       const response = await apiFetch(
-        `https://sid-api-yrbb.onrender.com/users/${userToEdit.id}`,
+        `${apiBaseUrl}/users/${userToEdit.id}`,
         {
           method: "PUT",
           headers: {

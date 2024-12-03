@@ -9,6 +9,8 @@ import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Navbar/Navbar';
 import { apiFetch } from '../../../core/auth';
 
+import apiBaseUrl from '@/utils/api';
+
 function Articles() {
   return (
     <div className="page-container">
@@ -54,7 +56,7 @@ function Content() {
     setIsLoading(true);
     const skip = (currentPage - 1) * limit;
 
-    let url = `https://sid-api-yrbb.onrender.com/articles?search_type=${searchType}&search=${encodeURIComponent(query)}&limit=${limit}&skip=${skip}`;
+    let url = `${apiBaseUrl}/articles?search_type=${searchType}&search=${encodeURIComponent(query)}&limit=${limit}&skip=${skip}`;
     if (section) {
       url += `&section=${section}`;
     }

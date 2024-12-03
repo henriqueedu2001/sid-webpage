@@ -10,6 +10,8 @@ import { apiFetch } from '../../../../core/auth';
 
 import './User.css';
 
+import apiBaseUrl from '@/utils/api';
+
 function ViewUserPage() {
   return (
     <div className="user-page">
@@ -36,7 +38,7 @@ const UserDetail = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch(`https://sid-api-yrbb.onrender.com/users/${id}`);
+        const res = await fetch(`${apiBaseUrl}/users/${id}`);
         if (!res.ok) {
           throw new Error("Erro ao buscar o usuário");
         }
@@ -55,7 +57,7 @@ const UserDetail = () => {
 
     const fetchCurrentUserId = async () => {
       try {
-        const res = await apiFetch("https://sid-api-yrbb.onrender.com/users/me");
+        const res = await apiFetch(`${apiBaseUrl}/users/me`);
         if (!res.ok) {
           throw new Error("Erro ao buscar o usuário atual");
         }
@@ -84,7 +86,7 @@ const UserDetail = () => {
 
   const handleSave = async () => {
     try {
-      const res = await apiFetch(`https://sid-api-yrbb.onrender.com/users/me`, {
+      const res = await apiFetch(`${apiBaseUrl}/users/me`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

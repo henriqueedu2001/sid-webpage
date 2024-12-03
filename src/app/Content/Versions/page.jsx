@@ -12,6 +12,8 @@ import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Navbar/Navbar';
 import { apiFetch } from '../../../core/auth';
 
+import apiBaseUrl from '@/utils/api';
+
 function Versions() {
   return (
     <div className="page-container">
@@ -40,12 +42,12 @@ function Content() {
 
     async function fetchData(articleId) {
         setIsLoading(true);
-        let url = `https://sid-api-yrbb.onrender.com/versions?article_id=${articleId}`;
+        let url = `${apiBaseUrl}/versions?article_id=${articleId}`;
         let res = await apiFetch(url);
         let apiData = await res.json();
         setVersionsData(apiData);
 
-        url = `https://sid-api-yrbb.onrender.com/articles/${articleId}`;
+        url = `${apiBaseUrl}/articles/${articleId}`;
         res = await apiFetch(url);
         apiData = await res.json();
         setCurrentData(apiData);

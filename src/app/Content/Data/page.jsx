@@ -9,6 +9,8 @@ import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import './data.css';
 
+import apiBaseUrl from '@/utils/api';
+
 export default function Page() {
   return (
     <div className='layout'>
@@ -91,7 +93,6 @@ function Content() {
   const handleGenerateMap = async () => {
     setIsLoading(true);
 
-    const apiBaseUrl = "https://sid-api-yrbb.onrender.com";
     const fetchAggregatedData = async () => {
       try {
         const endpoint =
