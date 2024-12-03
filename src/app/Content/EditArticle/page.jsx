@@ -39,13 +39,15 @@ function Content() {
   }, []);
 
   async function fetchData(article_id) {
-    let url = `${apiBaseUrl}/articles/${article_id}`;
+    let url = `${apiBaseUrl}/articles/${article_id}?full_content=true`;
     let res = await fetch(url);
     let apiData = await res.json();
-    setArticleData(apiData);
-    setTitle(apiData.title);
-    setSection(apiData.section);
-    setContent(apiData.content);
+    
+    setArticleData(apiData ?? '');    
+    setTitle(apiData.title ?? '');
+    setSection(apiData.section ?? '');
+    setContent(apiData.content ?? '');
+
   }
 
   const redirectToView = () => {
