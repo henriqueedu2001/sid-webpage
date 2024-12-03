@@ -147,7 +147,6 @@ function Content() {
           </button>
         </div>
       </div>
-      <button className='redirect-button' onClick={redirectToCreateArticle}>Criar Artigo</button>
       <div className="cards">
         {isLoading ? (
           <div className="loading-spinner"></div>
@@ -194,6 +193,8 @@ function Content() {
           </button>
         </div>
       )}
+
+      <button className='redirect-button' onClick={redirectToCreateArticle}>Criar Artigo</button>
     </div>
   );
 }
