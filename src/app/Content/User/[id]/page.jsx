@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 
-import { apiFetch } from '../../../../core/auth';
+import { apiFetch, logout } from '../../../../core/auth';
 
 import './User.css';
 
@@ -115,6 +115,11 @@ const UserDetail = () => {
     setEditing(false);
   };
 
+  const handleLogout = () => {
+    logout();
+    window.location.href = '/';
+  };
+
   if (loading) {
     return <p>Carregando os dados do usuário...</p>;
   }
@@ -188,7 +193,10 @@ const UserDetail = () => {
         {isCurrentUser && (
           <div className="edit-buttons">
             {!editing ? (
-              <button onClick={handleEditToggle} className="edit-button">Editar</button>
+              <>
+                <button onClick={handleEditToggle} className="edit-button">Editar</button>
+                <button onClick={handleLogout} className="logout-button">Sair</button>
+              </>
             ) : (
               <>
                 <button onClick={handleSave} className="save-button">Salvar</button>

@@ -1,82 +1,165 @@
 .article-text-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 2.5vh;
-    margin-top: 2.5vh;
-    flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.5vh;
+  margin-top: 2.5vh;
+  flex: 1;
 }
 
 .article-text-div {
-    width: 80vw;
-
+  width: 80vw;
+  height: 80vh;
 }
 
-.article-info{
-    width: 80vw;
-    display: flex;
-    justify-content: flex-start;
-    align-items: column;
-}
-  
-.article-title{
-    font-size: 36pt;
-    font-weight: 600;
+.article-info {
+  width: 80vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: column;
 }
 
-.article-section{
-    font-size: 18pt;
-    font-weight: 600;
+.article-title {
+  font-size: 36pt;
+  font-weight: 600;
 }
 
-.article-content{
-    font-size: 18pt;
+/* Botão de deletar */
+.delete-button {
+  width: 150px;
+  height: 40px;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.delete-button:hover {
+  background-color: #a71d2a;
+}
+
+
+.confirmation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.confirmation-box {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.confirmation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.confirm-button {
+  width: 150px;
+  height: 40px;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.confirm-button:hover {
+  background-color: #218838;
+}
+
+.cancel-button {
+  width: 150px;
+  height: 40px;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancel-button:hover {
+  background-color: #5a6268;
+}
+
+.article-section {
+  font-size: 18pt;
+  font-weight: 600;
+}
+
+.article-content {
+  font-size: 18pt;
 }
 
 .custom-line {
-    height: 2px;
-    background-color: #333;
-    width: 25vw; /* Ajusta o comprimento da linha para preencher o container */
-    margin-bottom: 2.5vh;
-    margin-top: 0.5vh;
-  }
+  height: 2px;
+  background-color: #333;
+  width: 25vw; /* Ajusta o comprimento da linha para preencher o container */
+  margin-bottom: 2.5vh;
+  margin-top: 0.5vh;
+}
 
-.content{
+.content {
   flex: auto;
   font-size: 16pt;
 }
-  
-  .button-group-view {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    margin-top: 20px;
-  }
 
-  .button-group-view .edit-button {
-    width: 150px;
-    padding: 10px;
-    font-size: 1rem;
-    background-color: #32689a; /* Blue color for the buttons */
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.1''s step-end;
-    margin-right: 20px;
-    margin-top: 20px;
-  }
+.button-group-view {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 20px;
+}
 
-  .button-group-view .versions-button {
-    width: 150px;
-    padding: 10px;
-    font-size: 1rem;
-    background-color: #276363; /* Blue color for the buttons */
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.1''s step-end;
-    margin-right: 20px;
-    margin-top: 20px;
-  }
+.button-group-view .edit-button,
+.button-group-view .versions-button {
+  width: 150px;
+  height: 40px;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.button-group-view .edit-button {
+  background-color: #32689a;
+  color: white;
+}
+
+.button-group-view .edit-button:hover {
+  background-color: #285778;
+}
+
+.button-group-view .versions-button {
+  background-color: #276363;
+  color: white;
+}
+
+.button-group-view .versions-button:hover {
+  background-color: #1d4c4c;
+}

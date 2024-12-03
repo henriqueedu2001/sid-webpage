@@ -34,9 +34,28 @@
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  border: 0px solid #ddd;
+  border: 2px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: auto;
   transition: transform 0.2s;
 }
+
+.logout-button {
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.logout-button:hover {
+  background-color: #a71d2a;
+}
+
 
 .user-profile-picture.disabled {
   cursor: default;
