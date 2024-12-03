@@ -9,7 +9,7 @@
 
 .article-text-div {
   width: 80vw;
-  height: 80vh;
+  height: auto;
 }
 
 .article-info {
