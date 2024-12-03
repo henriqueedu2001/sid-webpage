@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# sid-webpage
+Front end webpage for "Sistema de Informações sobre Dengue" (SID).
+ 
+This project is developed for PCS3643 (Laboratório de Engenharia de Software).
 
-## Getting Started
+Developed by:
+- [Erick Sousa](https://github.com/Erick-DAS)
+- [Carlos Engler](https://github.com/henriqueedu2001)
+- [Henrique Eduardo](https://github.com/henriqueedu2001)
+- [Enzo Tassini](https://github.com/Enzo-Tssn)
 
-First, run the development server:
+Read the following sections in order to start developing.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Install main Dependencies
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- npm
+- React
+- NextJS
+- Vercel CLI
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Setup environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+First of all, create a `.env` file sampled as the example `sample.env`. DO NOT change the variable `NEXT_PUBLIC_API_URL_PRODUCTION`, since the URL is constant. Defining the variable ENV as development or production will determine wich API you want to call. 
 
-## Learn More
+- [API repo](https://github.com/Erick-DAS/SID-api)
 
-To learn more about Next.js, take a look at the following resources:
+## Install dependencies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Run `npm i`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Build
 
-## Deploy on Vercel
+Run `npm run build`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Run
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Run `npm run dev`
+
+
+Now that the NextJS server is running, one can access `http://localhost:3000` to visit the webpage.
+
+`https://sid-webpage.vercel.app/` is the production public URL.
+
+
+
+
+
