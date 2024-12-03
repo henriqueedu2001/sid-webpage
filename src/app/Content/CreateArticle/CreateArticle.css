@@ -76,16 +76,3 @@ input.section-input {
   transition: background-color 0.1''s step-end;
   margin-right: 20px;
 }
-
-.button-group .sabving-button {
-  width: 150px;
-  padding: 10px;
-  font-size: 1rem;
-  background-color: #0c6b10; /* Blue color for the buttons */
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.1''s step-end;
-  margin-right: 20px;
-}
