@@ -6,14 +6,14 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Navbar/Navbar';
 
-import './EditArticle.css';
+import './CreateArticle.css';
 import 'quill/dist/quill.snow.css'; // Import Quill theme
 import QuillTextEditor from './QuillTextEditor';
 import { apiFetch } from '@/core/auth';
 
 import apiBaseUrl from '@/utils/api';
 
-function EditArticle() {
+function CreateArticle() {
   return (
     <div className="page-container">
       <Navbar section="articles"/>
@@ -28,64 +28,49 @@ function EditArticle() {
 function Content() {
   const searchParams = useSearchParams();
   const articleID = searchParams.get('id');
-  const [articleData, setArticleData] = useState(null);
   const [title, setTitle] = useState('');
   const [section, setSection] = useState('');
   const [content, setContent] = useState('');
   const router = useRouter();
-
-  useEffect(() => {
-    fetchData(articleID);
-  }, []);
-
-  async function fetchData(article_id) {
-    let url = `${apiBaseUrl}/articles/${article_id}?full_content=true`;
-    let res = await fetch(url);
-    let apiData = await res.json();
-    
-    setArticleData(apiData ?? '');    
-    setTitle(apiData.title ?? '');
-    setSection(apiData.section ?? '');
-    setContent(apiData.content ?? '');
-
-  }
-
-  const redirectToView = () => {
-    router.push(`/Content/ViewArticle?id=${articleID}`);
-  }
+  const [waiting, setWaiting] = useState(false) ;
 
   const handleSave = async () => {
-    const updatedArticle = {
-      id: articleID, // Include 'id' field
+    const newArticle = {
       title,
       section,
       content,
     };
 
-    try {
-      const response = await apiFetch(`${apiBaseUrl}/articles/${articleID}`, {
-        method: 'PUT',
+    if(waiting == false){
+      setWaiting(true);
+      try {
+      const response = await apiFetch(`${apiBaseUrl}/articles`, {
+        method: 'POST',
         headers: {
           'Accept': 'application/json', // Include 'Accept' header
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(updatedArticle),
+        body: JSON.stringify(newArticle),
       });
   
       if (response.ok) {
-        alert('Article saved successfully!');
+        alert('Article created successfully!');
+        setWaiting(false);
         // Optionally redirect or update UI
+        
       } else {
         // Handle server errors
         const errorData = await response.json();
-        alert(`Failed to save the article: ${errorData.message || response.statusText}`);
+        alert(`Failed to create the article: ${errorData.message || response.statusText}`);
       }
     } catch (error) {
       // Handle network errors
       console.error('Error:', error);
-      alert(`An error occurred while saving the article. ${error}` );
+      alert(`An error occurred while creating the article. ${error}` );
+      setWaiting(false);
     }
   };
+};
 
   return (
   <div className="text-editor-container">
@@ -121,11 +106,12 @@ function Content() {
     />
 
     <div className='button-group'>
-    <button className='button'  onClick={handleSave}>Save</button>
-    <button className='button'  onClick={redirectToView}>Visualizar Artigo</button>
+    <button className='button'  onClick={handleSave}>Criar</button>
+    {waiting && <p>salvando artigo</p>}
     </div>
   </div>
   );
 }
 
-export default EditArticle;
+
+export default CreateArticle;

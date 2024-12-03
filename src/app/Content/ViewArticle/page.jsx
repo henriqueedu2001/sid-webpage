@@ -34,9 +34,9 @@ function Content() {
     }, []);
 
     async function fetchData(article_id) {
-        const url = `${apiBaseUrl}/articles/${article_id}?full_content=False`;
-        const res = await apiFetch(url);
-        const apiData = await res.json();
+        let url = `${apiBaseUrl}/articles/${article_id}?full_content=True`;
+        let res = await apiFetch(url);
+        let apiData = await res.json();
         setArticleData(apiData);
     }
 
