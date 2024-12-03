@@ -74,6 +74,7 @@ function ArticleText({ article_data, articleID, userRole, loading }) {
 
     const redirectToEdit = () => {
         router.push(`/Content/EditArticle?id=${articleID}`);
+        window.location.reload();
     };
 
     const redirectToVersions = () => {

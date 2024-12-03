@@ -91,6 +91,11 @@ function Content() {
     router.push(`/Content/ViewArticle?id=${article_id}`);
   }
 
+  function redirectToCreateArticle() {
+    router.push(`/Content/CreateArticle`);
+    window.location.reload();
+  }
+
   return (
     <div className="articles-container">
       <div>
@@ -142,6 +147,7 @@ function Content() {
           </button>
         </div>
       </div>
+      <button className='redirect-button' onClick={redirectToCreateArticle}>Criar Artigo</button>
       <div className="cards">
         {isLoading ? (
           <div className="loading-spinner"></div>

@@ -224,3 +224,18 @@
       transform: rotate(360deg);
     }
   }
+
+  .redirect-button {
+    width: auto;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #32689a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.1''s step-end; 
+    margin-bottom: 20px;
+  }
