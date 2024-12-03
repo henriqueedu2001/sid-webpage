@@ -7,7 +7,7 @@ import './Articles.css';
 
 import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Navbar/Navbar';
-import { apiFetch } from '../../../core/auth';
+import { apiFetch, getCurrentUser } from '../../../core/auth';
 
 import apiBaseUrl from '@/utils/api';
 
@@ -33,6 +33,9 @@ function Content() {
   const [limit] = useState(24);
   const [totalItems, setTotalItems] = useState(0);
 
+  const [userRole, setUserRole] = useState(null);
+
+
   const [isLoading, setIsLoading] = useState(true);
   const sections = ['Patógeno', 'Transmissor', 'Prevenção', 'Tratamento', 'Dados'];
   const [selectedSection, setSelectedSection] = useState('');
@@ -44,7 +47,18 @@ function Content() {
     const sectionFromUrl = searchParams.get('section') || '';
     setSelectedSection(sectionFromUrl);
     fetchData(sectionFromUrl);
+    fetchUserRole();
   }, [searchParams, currentPage]);
+
+  async function fetchUserRole() {
+    try {
+        const currentUser = await getCurrentUser();
+        setUserRole(currentUser?.role || null);
+    } catch (error) {
+        console.error("Erro ao buscar o papel do usuário:", error);
+        setUserRole(null);
+    }
+}
 
   function handleKeyDown(e) {
     if (e.key === 'Enter') {
@@ -194,7 +208,7 @@ function Content() {
         </div>
       )}
 
-      <button className='redirect-button' onClick={redirectToCreateArticle}>Criar Artigo</button>
+      {(userRole == 'editor' || userRole == 'admin') && (<button className='redirect-button' onClick={redirectToCreateArticle}>Criar Artigo</button>)}
     </div>
   );
 }
