@@ -45,7 +45,7 @@ function Content() {
         let apiData = await res.json();
         setVersionsData(apiData);
 
-        url = `https://sid-api-yrbb.onrender.com/articles/${articleId}`;
+        url = `https://sid-api-yrbb.onrender.com/articles/${articleId}?full_content=False`;
         res = await apiFetch(url);
         apiData = await res.json();
         setCurrentData(apiData);
