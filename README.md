@@ -5,7 +5,7 @@ This project is developed for PCS3643 (Laboratório de Engenharia de Software).
 
 Developed by:
 - [Erick Sousa](https://github.com/Erick-DAS)
-- [Carlos Engler](https://github.com/henriqueedu2001)
+- [Carlos Engler](https://github.com/CarlosEngler)
 - [Henrique Eduardo](https://github.com/henriqueedu2001)
 - [Enzo Tassini](https://github.com/Enzo-Tssn)
 
