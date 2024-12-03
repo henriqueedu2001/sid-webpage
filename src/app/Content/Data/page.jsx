@@ -99,25 +99,32 @@ function Content() {
           dataType === "notifications"
             ? "/data/sjrp_notifications"
             : "/data/sisa_web_properties";
-
+    
         const startDateToUse =
           dataType === "workedProperties"
             ? calculateStartDate(secondDate)
             : firstDate;
-
+    
         const response = await fetch(
           `${apiBaseUrl}${endpoint}?start_date=${convertDate(
             startDateToUse
           )}&end_date=${convertDate(secondDate)}`
         );
-
+    
         if (!response.ok) {
           throw new Error("Failed to fetch aggregated data");
         }
-
+    
         const data = await response.json();
-        setAggregatedData(data);
-
+    
+        // Adiciona `dataType` a cada item do agregado
+        const enrichedData = data.map(item => ({
+          ...item,
+          dataType,
+        }));
+    
+        setAggregatedData(enrichedData);
+    
         setLastQuery({
           dataType: dataType === "notifications" ? "Casos" : "Imóveis trabalhados",
           startDate: formatDate(startDateToUse),
@@ -129,6 +136,7 @@ function Content() {
         setIsLoading(false);
       }
     };
+    
 
     fetchAggregatedData();
   };
@@ -214,11 +222,11 @@ function Content() {
         </div>
       )}
 
-      <div id="map-container">
-        {geoData && aggregatedData.length > 0 && (
-          <HeatMap geoData={geoData} aggregatedData={aggregatedData} />
-        )}
-      </div>
+<div id="map-container">
+  {geoData && aggregatedData.length > 0 && (
+    <HeatMap geoData={geoData} aggregatedData={aggregatedData} />
+  )}
+</div>
     </div>
   );
 }
