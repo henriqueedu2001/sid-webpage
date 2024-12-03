@@ -60,6 +60,10 @@ function Content() {
         router.push(`/Content/Versions?article_id=${articleIdFromUrl}`);
     }
 
+    function returnToArticle() {
+        router.push(`/Content/ViewArticle?id=${articleIdFromUrl}`);
+    }
+
     return (
         <div className="version-container">
             {isLoading ? (
@@ -80,7 +84,7 @@ function Content() {
                     <button className="old-button" onClick={returnToVersions}>
                         Voltar para listagem de versões
                     </button>
-                    <button className="new-button">
+                    <button className="new-button" onClick={returnToArticle}>
                         Voltar para versão atualizada
                     </button>
                 </div>
