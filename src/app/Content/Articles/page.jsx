@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState, Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 import './Articles.css';
 
@@ -87,6 +87,10 @@ function Content() {
     setCurrentPage(1);
   }
 
+  function handleCardClick(article_id) {
+    router.push(`/Content/ViewArticle?id=${article_id}`);
+  }
+
   return (
     <div className="articles-container">
       <div>
@@ -143,11 +147,10 @@ function Content() {
           <div className="loading-spinner"></div>
         ) : data.length > 0 ? (
           data.map((item) => (
-            <div key={item.id} className="card">
+            <div key={item.id} className="card" onClick={()  => handleCardClick(item.id)}>
               <h2 className="card-title">{item.title}</h2>
               <p className="card-description">{item.preview}</p>
               <p className="card-author">Autor: {item.author_name}</p>
-              <a to={`/Content/ViewArticle?id=${item.id}`}>ver</a>
             </div>
           ))
         ) : (

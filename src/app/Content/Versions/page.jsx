@@ -47,7 +47,7 @@ function Content() {
         let apiData = await res.json();
         setVersionsData(apiData);
 
-        url = `${apiBaseUrl}/articles/${articleId}`;
+        url = `${apiBaseUrl}/articles/${articleId}?full_content=False`;
         res = await apiFetch(url);
         apiData = await res.json();
         setCurrentData(apiData);
