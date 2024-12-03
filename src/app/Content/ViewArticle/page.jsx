@@ -1,11 +1,11 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState, Suspense } from 'react';
-import { apiFetch } from '../../../core/auth';
-import './ViewArticle.css';
 import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Navbar/Navbar';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { Suspense, useEffect, useState } from 'react';
+import { apiFetch } from '../../../core/auth';
+import './ViewArticle.css';
 
 function ViewArticle() {
     return (
@@ -29,7 +29,7 @@ function Content() {
     }, []);
 
     async function fetchData(article_id) {
-        let url = `https://sid-api-yrbb.onrender.com/articles/${article_id}`;
+        let url = `https://sid-api-yrbb.onrender.com/articles/${article_id}?full_content=True`;
         let res = await apiFetch(url);
         let apiData = await res.json();
         setArticleData(apiData);
